@@ -12,7 +12,10 @@ let generatePinVoteCount = (pin)=>{
         "B":50,
         "C":10,
         "D":5,
-        "E":1
+        "E":1,
+        "Y":1000,
+        "Z":5000
+
     }
     return pinCount[pin[0]]
 
@@ -41,7 +44,7 @@ module.exports = function(app){
             if(err) res.status(400).send(err)
             else{
                 if(result.rows.length == 0){
-                    res.status(400).send('No such nominee')
+                    res.status(406).send('No such nominee')
                 }
                 else{
                     let nomineeId = result.rows[0].id
