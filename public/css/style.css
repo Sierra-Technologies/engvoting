@@ -2,16 +2,23 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
 }
 
 body {
-  background: url("../images/photo_bg3.jpg") no-repeat center center fixed ;
+  background: url("https://firebasestorage.googleapis.com/v0/b/teax-forms.appspot.com/o/IMG-20220510-WA0006.jpg?alt=media&token=e022af4e-d77d-4e7c-927d-9a4a9433aede") no-repeat center center fixed ;
   background-size: cover;
   font-size: 16px;
   font-family: "Lato", sans-serif;
   font-weight: 300;
   margin: 0;
   color: #666;
+}
+.clock{
+  /* text-align: center;
+  font-size: 60px;
+  margin-top: 0px; */
+  color: red;
 }
 
 .button {
@@ -86,7 +93,7 @@ h1#title {
   color: white;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 10px;
   max-width: 300px;
   text-align: center;
   position: relative;
@@ -123,7 +130,108 @@ p.small {
 /* Layout */
 .container {
   margin: 0;
+  /* width: 100%; */
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .container {
+    /* background-color: #009579; */
+    width: 100%;
+  }
+  .login-box {
+    background-color: white;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .container {
+    /* background-color: blue; */
+    width: 100%;
+    max-width: 600px;
+
+  }
+  .login-box {
+    background-color: white;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .container {
+    /* background-color: red; */
+    width: 100%;
+  }
+  .login-box {
+    background-color: white;
+    max-width: 60vw;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+  
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .container {
+    /* background-color: blue; */
+    width: 100%;
+
+  }
+  .login-box {
+    background-color: white;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+  .login-box {
+    background-color: white;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+
+}
+
 
 .top {
   margin: 0;
@@ -147,17 +255,7 @@ p.small {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 
-.login-box {
-  background-color: white;
-  max-width: 60vw;
-  margin: 0 auto;
-  position: relative;
-  top: 10px;
-  padding-bottom: 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
-  text-align: center;
-}
+
 
 .login-box .box-header {
   background-color: #665851;
@@ -174,13 +272,24 @@ p.small {
   line-height: 2em;
 }
 
-.login-box input {
-  margin-bottom: 20px;
+
+.pin-input {
+  /* margin-bottom: 20px;
   padding: 12px 17px 12px 17px;
   border: 1px solid #ccc;
   border-radius: 2px;
   font-size: 1.2em;
+  width: 80%;
+  color: #888; */
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 1.35em;
   color: #888;
+  width: 80%;
+  margin: 0 auto;
+
 }
 .login-box select {
   margin-bottom: 20px;
@@ -191,6 +300,16 @@ p.small {
   color: #888;
   width: 80%;
   /* height: 30px; */
+}
+
+.login-box input {
+  margin-bottom: 20px;
+  /* padding: 12px 17px 12px 17px; */
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 1.2em;
+  width: auto;
+  color: #888;
 }
 
 .login-box input:focus {

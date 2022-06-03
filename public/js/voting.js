@@ -27,6 +27,20 @@ document.addEventListener('DOMContentLoaded',()=>{
         let pin = document.querySelector('#pin').value
         let obj = {category,pin,name}
         console.log(obj)
+        let generatePinVoteCount = (pin)=>{
+            let pinCount = {
+                'A':100,
+                "B":50,
+                "C":10,
+                "D":5,
+                "E":1,
+                "Y":1000,
+                "Z":5000
+        
+            }
+            return pinCount[pin[0]]
+        
+        }
         fetch('/r-x',{
             method:'POST',
             headers:{
@@ -34,17 +48,28 @@ document.addEventListener('DOMContentLoaded',()=>{
             },
             body:JSON.stringify(obj)}).then(res =>{
                 if(res.status == '200'){
-                    swal('Successfully voted.','','success')
-                    btn.classList.remove("button--loading");
+                    if (generatePinVoteCount(pin)==1){
+                        swal('You have Successfully voted '+generatePinVoteCount(pin)+' time'+' for '+name,'','success')
+                        btn.classList.remove("button--loading");
+                    }
+                    else{
+                        swal('You have Successfully voted '+generatePinVoteCount(pin)+' times'+' for '+name,'','success')
+                        btn.classList.remove("button--loading");
+                    }
 
                 }
                 else if(res.status =='404'){
+                    
                     swal('Pin is Invalid','Please enter a valid pin','error')
                     btn.classList.remove("button--loading");
                 }
 
                 else if(res.status =='400'){
                     swal('Pin has already been used.', "Please try again.", "error");
+                    btn.classList.remove("button--loading");
+                }
+                else if(res.status =='406'){
+                    swal('Please select Category and nominee',"Please try again", "error");
                     btn.classList.remove("button--loading");
                 }
                 else{
@@ -63,6 +88,35 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 })
+
+// Set the date we're counting down to
+var countDownDate = new Date("Jun 17, 2022 23:59:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="clock"
+  document.getElementById("clock").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("clock").innerHTML = "EXPIRED";
+  }
+}, 1000);
 
 var categoryObject = {
     "Best Lecturer - Civil": {
@@ -129,7 +183,7 @@ var categoryObject = {
         "Zainab Bangura":"BEF7"
     },
     "Best Class Rep Male":{
-      "Amadu Jalloh": "BCM1",
+      "Hassan Sheriff": "BCM1",
       "Moses Amara": "BCM2",
       "Moses Joshua Coker": "BCM3",
       "Abu Bakarr Lamin": "BCM4",
@@ -138,13 +192,12 @@ var categoryObject = {
       "Festus Ewakaa Kahunla": "BCM6"
     },
     "Best Class Rep Female":{
-      "Mary Yandamoh":"BCF1",
+      "Mariama Yandamoh Kamara":"BCF1",
       "Veronna Pratt":"BCF2",
       "Hawa Kanu":"BCF3",
       "Mariama Kamara":"BCF4",
       "Lucy Bundu":"BCF5",
-      "Bushra Sorieba Suluku":"BCF6",
-      "Helena Fatmata Bangura":"BCF7"
+      "Helena Fatmata Bangura":"BCF6"
     },
     "Most Influential Student Male":{
       "Samuel James Turay":"MIM1",
@@ -165,7 +218,7 @@ var categoryObject = {
       "Tenneh Kallon":"MIF7"
     },
     "Best Friends Male":{
-        "David Ayo Jones and Samuel J Turay ":"BFM1",
+        "David Ayo Jones and Samuel J Turay":"BFM1",
         "Prince Sago Kamara and Abdul Munim Mansaray":"BFM2",
         "Tamba Kassegbama and Joshua Samuels":"BFM3",
         "Mohamed Mark Bangura and Majid Hamid Bayoh":"BFM4",
@@ -175,18 +228,18 @@ var categoryObject = {
         "Mohamed John Kargbo and Mamoud Kabia":"BMF8"
     },
     "Best Friends Female":{
-        "Jane Luseni and Audra Cathy ":"BFF1",
-        "Dalanda Wurie and Veronna Pratt ":"BFF2",
+        "Jane Luseni and Audra Cathy":"BFF1",
+        "Dalanda Wurie and Veronna Pratt":"BFF2",
         "Ejatu Jalloh and Umu Hawa Turay":"BFF3",
-        "Gloria Grey Coker and Aminata Ruth Rogers ":"BFF4",
-        "Habibatu Mbeimuna Konya Fabbah  and Grace Hawa Kaikai ":"BFF5",
-        "Emelia Biaddy and Angela A Bangura ":"BFF6",
+        "Gloria Grey Coker and Aminata Ruth Rogers":"BFF4",
+        "Habibatu Mbeimuna Konya Fabbah and Grace Hawa Kaikai":"BFF5",
+        "Emelia Biaddy and Angela A Bangura":"BFF6",
         "Rebecca Gbla and Umu Abiola":"BFF7"
     },
     "Best Freshman Male":{
         "Alhaji Ibrahim Barrie":"BFMM1",
         "Bubakarr Barrie":"BFMM2",
-        "Abdul Rahman Jalloh":"BFMM3",
+        "Abdul Ramadan Jalloh":"BFMM3",
         "Abu Jessy Turay":"BFMM4",
         "Lawrence Stevens":"BFMM5",
         "Abubakarr S Kamara":"BFMM6",
@@ -205,8 +258,8 @@ var categoryObject = {
     "Most Innovative Student Male":{
         "Mohamed Fofanah":"MISM1",
         "Fenti Sahid Fornah":"MISM2",
-        "Buakei Lahai Mammy ":"MISM3",
-        "Mahmoud Kabia":"MISM4",
+        "Buakei Lahai Mammy":"MISM3",
+        "Mamoud Kabbia":"MISM4",
         "David Ayo Jones":"MISM5",
         "Bobson Abdulai Kargbo":"MISM6",
         "Tamba Kassegbama":"MISM7"
@@ -278,7 +331,7 @@ var categoryObject = {
         "Issa Mohamed Fornah":"MRDM3",
         "Sahr Christian Jabba":"MRDM4", 
         "Buakei Lahai Mammy":"MRDM5", 
-        "Mohamed A Mumu":"MRDM6", 
+        "Mohamed A. Munu":"MRDM6", 
         "Hamid Majid Bayoh":"MRDM7"
     },
     "Most Responsibly Dressed Student Female":{
@@ -302,7 +355,7 @@ var categoryObject = {
     "Best Student Leader Female":{
         "Umu Hawa Turay":"BSLF1",
         "Emelia Biaddy":"BSLF2", 
-        "Mariama Yandoh":"BSLF3", 
+        "Mariama Yandamoh Kamara":"BSLF3", 
         "Deborah Momoh":"BSLF4", 
         "Lucy Bundu":"BSLF5",
         "Helena Fatmata Bangura":"BSLF6",
