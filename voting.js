@@ -114,7 +114,7 @@ var x = setInterval(function() {
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("clock").innerHTML = "EXPIRED";
+    document.getElementById("clock").innerHTML = "VOTING CLOSE";
   }
 }, 1000);
 
