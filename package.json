@@ -7,7 +7,7 @@
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Shelpidy",
+  "author": "Emmanuel",
   "license": "MIT",
   "dependencies": {
     "africastalking": "^0.5.5",
